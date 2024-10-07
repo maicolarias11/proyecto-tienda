@@ -6,6 +6,7 @@ function Contacto() {
       <div className="contact-form">
         <div className="container-form">
           <form action="#">
+            <center><h1>CONTÁCTANOS</h1></center>
             <input className="input-form" type="text" placeholder="Nombre" />
             <input className="input-form" type="text" placeholder="Telefono" />
             <input className="input-form" type="text" placeholder="Correo" />

@@ -82,24 +82,66 @@ a{
   transform: rotate(35deg) translate(-4px, -5px);
 }
 
-/*Banner*/
-/* .banner-tienda {
-  width: 50%;
+/*Card Home*/
+.card-home-contain {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.card-home-contain:hover {
+  background-color: black;
+}
+
+.img img {
+  width: 95%;
+  margin: 10px;
+  cursor: pointer;
+  height: auto;
+}
+
+.img img:hover {
+  width: 98%;
+}
+
+/* .btn-shop {
+  width: 10%;
+  height: 5vh;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}
+
+.btn-shop:hover {
+  background-color: #5a5757;  
+  color: black;
+  transition: color 0.3s;
 } */
 
 /*Contact*/
 .contact-form {
+  margin: 10px;
   display: flex;
   justify-content: center;
-  margin: 60px;
+  /* margin: 60px; */
+}
+
+h1 {
+  font-size: 25px;
+  color: white;  
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
 }
 
 .container-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40vh;
-  width: 20%;
+  /* height: 40vh; */
+  width: 35%;
 }
 
 .input-form {
