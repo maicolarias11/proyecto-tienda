@@ -1,0 +1,206 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: rgb(43, 43, 43);
+}
+/*Navbar*/
+.navbar{ 
+  background-color: blue;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 15vh;
+  background-color: black;
+}
+
+.nav_item{
+  display: inline-block;
+  align-items: center;
+  justify-content: space-around;
+  gap: 3rem;
+  margin: 15px;
+}
+
+.nav_toggler div{
+  width: 2rem;
+  height: 0.1rem;
+  margin: 0.3rem;
+  background: white;
+  transition: 0.4s ease-in;
+}
+
+.nav_toggler{
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .nav_toggler {
+    display: block;
+  }
+  .nav_menu{
+    position: fixed;
+    top: 7vh;
+    right: 0;
+    width: 20%;
+    height: 93vh;
+    background-color: black;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: 0.5s ease-in;
+  }
+}
+
+.nav_active {
+  transform: translateX(0);
+}
+
+.toggle .line1 {
+  transform: rotate(-35deg) translate(-4px, 5px);
+}
+.toggle .line2 {
+  opacity: 0;
+}
+.toggle .line3 {
+  transform: rotate(35deg) translate(-4px, -5px);
+}
+
+/*Banner*/
+/* .banner-tienda {
+  width: 50%;
+} */
+
+/*Contact*/
+.contact-form {
+  display: flex;
+  justify-content: center;
+  margin: 60px;
+}
+
+.container-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  width: 20%;
+}
+
+.input-form {
+  margin: 10px;
+  padding: 5px;
+  width: 100%;
+  height: 8vh;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.input-form-message {
+  margin: 10px;
+  padding: 5px;
+  width: 100%;
+  height: 15vh;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+ 
+.input-form:hover {
+  background-color: rgba(255, 255, 255, 0.219);
+  color: white;
+}
+
+.input-form-message:hover {
+  background-color: rgba(255, 255, 255, 0.219);
+  color: white;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-form {
+  width: 60%;
+  height: 5vh;
+  background-color: bisque;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-form:hover {
+  background-color: rgba(255, 255, 255, 0.219);
+  color: white;
+}
+
+/*Footer*/
+section, p, h2, a {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+} 
+
+/* h2, a {
+  font-family: "Playwrite DE Grund", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+} */
+
+.footer-tienda {
+  height: 30vh;
+  background-color: black;
+  color: white;
+  padding: 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.section-1, .section-2, .section-3 {
+  margin: 0 20px;
+}
+
+.icons-rds {
+  /* width: 50%; */
+  display: flex;
+  align-items: center;
+}
+
+.icons-rds i, .section-3 i {
+  font-size: 24px;
+  margin-right: 8px;
+  color: #333; 
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.icons-rds i:hover, .section-3 i:hover {
+  color: white;
+}
+
+/* .section-3 {
+  margin-left: auto;
+} */
