@@ -20,10 +20,10 @@ function Navbar() {
   return (
     <>
         <nav className="nav">
-            <a href="#" className='#'><img className='logoimg' src={Logo} width={270} alt="" /></a>
+            <a href="#" className='#'><img className='logoimg' src={Logo} width="50000000%" alt="" /></a>
             <ul className={active}>
-                <li className='nav_item'><a href="#">Home</a></li>
-                <li className='nav_item'><a href="#">Catalogo</a></li>
+                <li className='nav_item'><a href="/">Home</a></li>
+                <li className='nav_item'><a href="/catalogo">Catalogo</a></li>
                 <li className='nav_item'><a href="#">Contacto</a></li>
             </ul>
             <div onClick={navToggle} className={toggleIcon}>

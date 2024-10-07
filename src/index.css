@@ -8,6 +8,9 @@ body{
   background-color: rgb(43, 43, 43);
 }
 /*Navbar*/
+.logoimg {
+  width: 50%;
+}
 .navbar{ 
   background-color: blue;
 }
@@ -121,6 +124,11 @@ a{
   transition: color 0.3s;
 } */
 
+/*Banner*/
+.banner-tienda img {
+  width: 100%;
+}
+
 /*Contact*/
 .contact-form {
   margin: 10px;
@@ -193,6 +201,74 @@ h1 {
   background-color: rgba(255, 255, 255, 0.219);
   color: white;
 }
+
+/*Catalogo*/
+.arrow-left i {
+  font-size: 30px;
+  margin: 10px;
+  padding: 8px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.card-contain {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.card-catalogo, img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+
+.text-card p {
+  /* margin-bottom: 5px; */
+  font-size: 17px;
+  text-align: center;
+}
+
+.btn-clo {
+  width: 10%;
+  height: 5vh;
+  border: none;
+  border-radius: 20px;
+  margin: 6px;
+  background-color: black;
+  color: white;
+}
+
+.btn-clo:hover {
+  background-color: rgba(255, 255, 255, 0.219);
+}
+
+.title-animation {
+  display: flex;
+  overflow: hidden; 
+  white-space: nowrap; 
+  background-color: black;
+}
+
+.title-animation span {
+  display: inline-block;
+  padding: 0 30px;
+  animation: moveText 10s linear infinite; 
+  color: white;
+  font-size: 20px;
+}
+
+@keyframes moveText {
+  0% {
+    transform: translateX(100%); /* Comienza fuera del contenedor por la derecha */
+  }
+  50% {
+    transform: translateX(-100%); /* Mueve el texto fuera del contenedor por la izquierda */
+  }
+  100% {
+    transform: translateX(100%); /* Regresa al punto inicial, a la derecha */
+  }
+}
+
 
 /*Footer*/
 section, p, h2, a {
