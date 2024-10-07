@@ -269,6 +269,50 @@ h1 {
   }
 }
 
+/*Login*/
+.login-form {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  /* margin: 60px; */
+}
+
+.login-contain {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-form {
+  font-size: 35px;
+}
+
+.option-login i {
+  font-size: 19px;
+  margin-bottom: 5px;
+  padding:11px;
+}
+
+.option-login a {
+  margin: 4px;
+}
+
+.hr-login {
+  width: 80%;
+  margin: 15px;
+}
+
+.sub1-form {
+  font-size: 18px;
+  color: white;
+  margin: 50px;
+}
+
+.sub2-form {
+  color: rgba(0, 0, 255, 0.699);
+  margin: 10px;
+}
 
 /*Footer*/
 section, p, h2, a {
