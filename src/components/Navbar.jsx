@@ -24,7 +24,7 @@ function Navbar() {
             <ul className={active}>
                 <li className='nav_item'><a href="/">Home</a></li>
                 <li className='nav_item'><a href="/catalogo">Catalogo</a></li>
-                <li className='nav_item'><a href="#">Contacto</a></li>
+                <li className='nav_item'><a href="/login">LogIn</a></li>
             </ul>
             <div onClick={navToggle} className={toggleIcon}>
                 <div className='line1'></div>
