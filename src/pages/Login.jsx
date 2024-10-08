@@ -30,7 +30,7 @@ function Login() {
 
                         <center>
                             <span className="sub1-form">¿No tines una cuenta?</span>
-                            <a href="#"><p className="sub2-form">Registrate</p></a>
+                            <a href="/register"><p className="sub2-form">Registrate</p></a>
                         </center>
                     </form>
                 </div>
