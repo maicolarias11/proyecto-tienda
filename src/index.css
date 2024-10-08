@@ -314,6 +314,51 @@ h1 {
   margin: 10px;
 }
 
+/*Register*/
+.register-form {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  /* margin: 60px; */
+}
+
+.register-contain {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.option-register i {
+  font-size: 19px;
+  margin-bottom: 5px;
+  padding:11px;
+}
+
+.option-register a {
+  margin: 4px;
+}
+
+.btn-enviar {
+  width: 25%;
+  height: 7vh;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.icon-xmark i {
+  position: absolute;
+  top: 130px; 
+  right: 393px;
+  font-size: 30px;
+  margin: 6px;
+  padding: 4px;
+  /* border-radius: 100px;
+  background-color: black; */
+}
+
 /*Footer*/
 section, p, h2, a {
   font-family: "Nunito", sans-serif;
