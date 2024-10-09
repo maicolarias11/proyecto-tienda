@@ -22,8 +22,14 @@ function Login() {
                         <input className="input-form" type="text" placeholder="Correo" />
                         <input className="input-form" type="password" placeholder="Contraseña"/>
 
+                        <center>
+                            <button className="btn-enviar">Iniciar sesión</button>
+                        </center>
+
                         <div className="option-login">
-                            <i className="fa-brands fa-google"><a href="#">Ingresa con tu cuenta de Google</a></i>
+                            <center>
+                                <i className="fa-brands fa-google"><a href="#">Ingresa con tu cuenta de Google</a></i>
+                            </center>
                         </div>
 
                         <center><hr className="hr-login" /></center>
