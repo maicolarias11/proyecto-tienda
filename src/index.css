@@ -85,6 +85,26 @@ a{
   transform: rotate(35deg) translate(-4px, -5px);
 }
 
+.nav_item i {
+  font-size: 20px;
+  color: white;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.combobox {
+  background-color: #333;
+  border: none;
+}
+
+.combobox option {
+  color: white;
+}
+
+.icon-lg-re {
+  margin: 10px;
+}
+
 /*Card Home*/
 .card-home-contain {
   padding: 10px;

@@ -1,8 +1,19 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-
+import { auth, provider, signInWithPopup } from "../firebase-config";
 
 function Register() {
+    const handleGoogleSignIn = () => {
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            console.log('Usuario registrado correctamente', result.user);
+            window.location.href = '/';
+        })
+        .catch((error) => {
+            console.log('Error al registrarse con Google', error);
+        });
+    };
+
     return(
         <>
             <Navbar />
@@ -32,7 +43,9 @@ function Register() {
 
                         <div className="option-register">
                             <center>
-                                <i className="fa-brands fa-google"><a href="#">Registrate con tu cuenta de Google</a></i>
+                                <i className="fa-brands fa-google" onClick={handleGoogleSignIn}>
+                                    <a href="#">Registrate con tu cuenta de Google</a>
+                                </i>
                             </center>
                         </div>
 

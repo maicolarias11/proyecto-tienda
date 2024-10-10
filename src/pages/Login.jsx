@@ -1,8 +1,19 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-
+import { auth, provider, signInWithPopup } from "../firebase-config";
 
 function Login() {
+    const handleGoogleLogIn = () => {
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            console.log('Usuario autenticado', result.user);
+            window.location.href = '/';
+        })
+        .catch((error) => {
+            console.log('Error al autenticarse con Google', error);
+        });
+    };
+
     return(
         <>
             <Navbar />
@@ -28,7 +39,9 @@ function Login() {
 
                         <div className="option-login">
                             <center>
-                                <i className="fa-brands fa-google"><a href="#">Ingresa con tu cuenta de Google</a></i>
+                                <i className="fa-brands fa-google" onClick={handleGoogleLogIn}>
+                                    <a href="#">Ingresa con tu cuenta de Google</a>
+                                    </i>
                             </center>
                         </div>
 
