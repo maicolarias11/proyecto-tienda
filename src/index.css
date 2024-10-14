@@ -92,17 +92,8 @@ a{
   cursor: pointer;
 }
 
-.combobox {
-  background-color: #333;
-  border: none;
-}
-
-.combobox option {
-  color: white;
-}
-
 .icon-lg-re {
-  margin: 10px;
+  margin: 8px;
 }
 
 /*Card Home*/

@@ -1,7 +1,8 @@
 // import { Link } from 'react-router-dom';
 import Logo from '../images/Logo.png';
 import { useState, useEffect } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from '../firebase-config';
 
 function Navbar() {
     const [active, setActive] = useState("nav_menu");
@@ -27,12 +28,23 @@ function Navbar() {
                 setIsAuthenticated(true);
             }
             else {
-                setIsAuthenticated
+                setIsAuthenticated(false);
             }
         });
 
         return () => unsubscribe
     }, []);
+
+    const handleLogout  = () => {
+        signOut(auth)
+        .then(() => {
+            console.log('Sesión cerrada');
+            window.location.href = "/login";
+        })
+        .cath((error) => {
+            console.log('Error al cerrar la sesión', error);
+        })
+    }
     
   return (
     <>
@@ -42,11 +54,18 @@ function Navbar() {
                 <li></li>
             </ul> */}
             <ul className={active}>
-                {isAuthenticated && (
+                <li className='nav_item'><a href="/">Home</a></li>
+                <li className='nav_item'><a href="/catalogo">Catalogo</a></li>
+                {isAuthenticated ? (
                     <li className='nav_item' >
                         <i className="icon-lg-re fa-regular fa-user"></i>
-                        <i className="icon-lg-re fa-solid fa-right-from-bracket"></i>
+                        <i className="icon-lg-re fa-solid fa-right-from-bracket" onClick={handleLogout}></i>
                     </li>
+                ) : (
+                    <>
+                        <li className='nav_item'><a href="/login">LogIn</a></li>
+                        <li className='nav_item'><a href="/register">Register</a></li>
+                    </>
                 )}
                  {/* <li className='nav_item' >
                     <i className="icon-lg-re fa-regular fa-user"></i>
@@ -54,11 +73,9 @@ function Navbar() {
                 </li> */}
                 
                 <li className='nav_item'>
-                    <i className='fa-solid fa-shop'></i>
+                    <i className='icon-shop fa-solid fa-shop'></i>
                 </li>
-                <li className='nav_item'><a href="/">Home</a></li>
-                <li className='nav_item'><a href="/catalogo">Catalogo</a></li>
-                <li className='nav_item'><a href="/login">LogIn</a></li>
+
             </ul>
             <div onClick={navToggle} className={toggleIcon}>
                 <div className='line1'></div>
