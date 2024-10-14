@@ -86,7 +86,7 @@ function Register() {
             <div className="register-form">
                 <a href="/login" className="icon-xmark"><i className="fa-solid fa-xmark"></i></a>
                 <div className="register-contain">
-                    <form onSubmit={handleRegister}>
+                    <form>
                         <div className="body-form">
                             <center>
                                 <h1 className="title-form">Registrate</h1>
@@ -130,7 +130,7 @@ function Register() {
                         />
 
                         <center>
-                            <button className="btn-enviar" type="submit">Registrarse</button>
+                            <button className="btn-enviar" type="submit" onSubmit={handleRegister}>Registrarse</button>
                         </center>
 
                         <div className="option-register">
