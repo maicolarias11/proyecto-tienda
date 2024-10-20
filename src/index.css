@@ -371,6 +371,68 @@ h1 {
   background-color: black; */
 }
 
+/*DashboardAdmin*/
+
+/*Inventario*/
+ .inventario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-inventary {
+  width: 30%;
+  padding-left: 20px;
+  margin: 15px;
+}
+
+.btn-publish {
+  width: 30%;
+  height: 6vh;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 16px;
+}
+
+/*SideMenu*/
+.sidemenu-contain {
+  background-color: black;
+  color:  white;
+  height: 55vh;
+  width: 17%;
+}
+
+.side_nav_item {
+  padding: 15px;
+}
+
+.side-icons {
+  font-size: 18px;
+  margin: 10px;
+}
+
+.btn-logout-side, .side-icon-logout {
+  font-size: 15px;
+  margin: 8px;
+}
+
+.btn-logout-side {
+  width: 80%;
+  height: 5vh;
+  border: none;
+  border-radius: 17px;
+  background-color: transparent;
+  color: white;
+  margin: 23px;
+  margin-top: 160px;
+  cursor: pointer;
+}
+
+.btn-logout-side:hover {
+  background-color: #333;
+}
+
 /*Footer*/
 section, p, h2, a {
   font-family: "Nunito", sans-serif;

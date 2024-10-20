@@ -58,6 +58,7 @@ function Navbar() {
                 <li className='nav_item'><a href="/catalogo">Catalogo</a></li>
                 {isAuthenticated ? (
                     <li className='nav_item' >
+                        <li className='nav_item'><a href="/dashboard/admin">Dashboard</a></li>
                         <i className="icon-lg-re fa-regular fa-user"></i>
                         <i className="icon-lg-re fa-solid fa-right-from-bracket" onClick={handleLogout}></i>
                     </li>
