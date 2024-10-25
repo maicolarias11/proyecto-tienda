@@ -4,17 +4,17 @@ import Header from "../components/Header"
 import SideMenu from "../components/Sidemenu"
 
 
-function Pedidos() {
+function Usuarios() {
     return(
         <>
             <Header />
-            <div className="dashboard-container">
+            <div className="dashboard-contairner">
                 <div className="flex">
                     <SideMenu />
                     <div className="content">
                         <center>
                             <h3 className="title-table-gnral">
-                                Total de pedidos.
+                                Total de usuarios registrados.
                             </h3>
                         </center>
 
@@ -22,21 +22,15 @@ function Pedidos() {
                             <thead className="column">
                                 <tr>
                                     <th>Nombre completo</th>
-                                    <th>Producto</th>
-                                    <th>Dirección</th>
                                     <th>Celular</th>
-                                    <th>Acción</th>
+                                    <th>Correo</th>
                                 </tr>
                             </thead>
                             <tbody className="file">
                                 <tr>
                                     <th>Maicol</th>
-                                    <th>Camiseta Clasick</th>
-                                    <th>Barichara</th>
                                     <th>304******</th>
-                                    <th>
-                                        <button className="btn-env-pedido">Enviar pedido</button>
-                                    </th>
+                                    <th>maicolarias1104@gmail.com</th>
                                 </tr>
                             </tbody>
                         </table>
@@ -48,4 +42,4 @@ function Pedidos() {
     )
 }
 
-export default Pedidos
+export default Usuarios

@@ -11,6 +11,7 @@ import Register from './pages/Register';
 import DashboardAdmin from './pages/Dashboard';
 import Inventario from './pages/Inventario';
 import Pedidos from './pages/Pedidos';
+import Usuarios from './pages/Usuarios';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='/dashboard/admin' element={<DashboardAdmin />} />
           <Route path='/inventario' element={<Inventario />} />
           <Route path='/pedidos' element={<Pedidos />} />
+          <Route path='/usuarios' element={<Usuarios />} />
         </Routes>
       </Router>
     </>

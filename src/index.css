@@ -371,7 +371,125 @@ h1 {
   background-color: black; */
 }
 
+/*Estilos generales Dashboard*/
+.flex {
+  display: flex;
+  flex: 1;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+/*HeaderPage*/
+.header-page-dashboard {
+  display: flex;
+  background-color: black;
+  height: 8vh;
+}
+
+.title-header {
+  font-size: 20px;
+  padding: 12px;
+}
+
+.header-icon {
+  font-size: 20px;
+  color: white;
+  padding: 12px;
+  margin-left: 1050px;
+}
+
 /*DashboardAdmin*/
+.title-dashboard {
+  background-color: #696464;
+  height: 15vh;
+  padding: 15px;
+  font-size: 20px;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+span {
+  font-family: "Arima", system-ui;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.card-dashboard {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.card-dashboard-info {
+  display: inline-block;
+  background-color: #696464;
+  margin: 8px;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.icon-card {
+  color: black;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+}
+
+.analytics {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vistas-page {
+  background-color: #696464;
+  width: 50%;
+  height: 40vh;
+  margin: 8px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.vistas-page-2 {
+  background-color: #696464;
+  width: 40%;
+  height: 40vh;
+  margin: 8px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.grafic-ventas {
+  margin-top: -10px;
+}
+
+.grafic-visitas {
+  margin-top: 10px;
+}
+
+h3 {
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
 
 /*Inventario*/
  .inventario {
@@ -381,9 +499,9 @@ h1 {
 }
 
 .form-inventary {
-  width: 30%;
+  width: 50%;
   padding-left: 20px;
-  margin: 15px;
+  margin: 10px;
 }
 
 .btn-publish {
@@ -395,12 +513,59 @@ h1 {
   border-radius: 16px;
 }
 
+/*Estilos generales table Pedidos y Usuarios*/
+.table-gnral {
+  background-color: #333;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.column {
+  background-color: black;
+  height: 5vh;
+}
+
+.column:hover {
+  background-color: #b93d08;
+}
+
+.file {
+  height: 5vh;
+}
+
+.file:hover {
+  background-color: #696464;
+}
+
+th {
+  color: white;
+}
+
+.title-table-gnral {
+  font-size: 30px;
+}
+
+.btn-env-pedido {
+  height: 4vh;
+  padding: 2px;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-env-pedido:hover {
+  background-color: #333;
+}
+
 /*SideMenu*/
 .sidemenu-contain {
   background-color: black;
   color:  white;
-  height: 55vh;
-  width: 17%;
+  width: 14rem;
+  height: calc(100vh - 52px);
 }
 
 .side_nav_item {
@@ -425,12 +590,16 @@ h1 {
   background-color: transparent;
   color: white;
   margin: 23px;
-  margin-top: 160px;
+  margin-top: 240px;
   cursor: pointer;
 }
 
-.btn-logout-side:hover {
+.btn-logout-side {
   background-color: #333;
+}
+
+.btn-logout-side:hover {
+  background-color: #696464;
 }
 
 /*Footer*/
