@@ -280,6 +280,100 @@ h1 {
   }
 }
 
+/*ViewProduct*/
+.section-img-products {
+  display: flex;
+  align-items: center; 
+}
+
+.section-img-products-2 {
+  display: flex;
+  align-items: center; 
+}
+
+.info {
+  align-items: stretch;
+}
+
+.img-product-1{
+  width: 30%;
+  margin: 5px;
+}
+
+.img-product-2 {
+  width: 30%;
+  padding-top: 60px;
+}
+
+.title-section {
+  font-size: 18px;
+  margin: 8px;
+  color: white;
+}
+
+.description-product {
+  font-size: 18px;
+  margin: 8px;
+  color: white;
+}
+
+.price-product {
+  font-size: 16px;
+  margin: 8px;
+  color: white;
+}
+
+.title-tallas {
+  font-size: 16px;
+  margin: 8px;
+  color: white;
+}
+
+.talla-product {
+  display: flex;
+}
+
+.detail-product {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  color: white;
+}
+
+.add-product {
+  width: 15%;
+  height: 5vh;
+  border: none;
+  border-radius: 5px;
+  background-color: #b93d08;
+  color: white;
+  margin: 8px;
+}
+
+.hr-name {
+  width: 18%;
+  margin: 8px;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.talla {
+  background-color: #696464;
+  color: white;
+  font-size: 20px;
+  margin: 8px;
+  width: 30px;
+}
+
+.talla:hover {
+  background-color: #b93d08;
+  border: black;
+}
+
 /*Login*/
 .login-form {
   margin: 10px;
