@@ -12,6 +12,8 @@ import DashboardAdmin from './pages/Dashboard';
 import Inventario from './pages/Inventario';
 import Pedidos from './pages/Pedidos';
 import Usuarios from './pages/Usuarios';
+import ViewProduct from './pages/Viewproduct';
+
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
           <Route path='/camisetas' element={<Camisetas />} />
           <Route path='/buzos' element={<Buzos />} />
           <Route path='/gorras' element={<Gorras />} />
+          <Route path='/vista/producto' element={<ViewProduct />} />
           <Route path='/dashboard/admin' element={<DashboardAdmin />} />
           <Route path='/inventario' element={<Inventario />} />
           <Route path='/pedidos' element={<Pedidos />} />
