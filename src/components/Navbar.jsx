@@ -74,7 +74,9 @@ function Navbar() {
                 </li> */}
                 
                 <li className='nav_item'>
-                    <i className='icon-shop fa-solid fa-shop'></i>
+                    <a href="/carrito">
+                        <i className='icon-shop fa-solid fa-shop'></i>
+                    </a>
                 </li>
 
             </ul>
