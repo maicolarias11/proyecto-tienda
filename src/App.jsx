@@ -13,6 +13,7 @@ import Inventario from './pages/Inventario';
 import Pedidos from './pages/Pedidos';
 import Usuarios from './pages/Usuarios';
 import ViewProduct from './pages/Viewproduct';
+import CartShopping from './pages/CartShopping';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path='/buzos' element={<Buzos />} />
           <Route path='/gorras' element={<Gorras />} />
           <Route path='/vista/producto' element={<ViewProduct />} />
+          <Route path='/carrito' element={<CartShopping />} />
           <Route path='/dashboard/admin' element={<DashboardAdmin />} />
           <Route path='/inventario' element={<Inventario />} />
           <Route path='/pedidos' element={<Pedidos />} />
