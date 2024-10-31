@@ -1,58 +1,60 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth, db } from '../firebase-config'; // Importa la configuración de Firebase
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { auth, provider, signInWithPopup, signInWithEmailAndPassword, db } from "../firebase-config";
-import { doc, getDoc } from "firebase/firestore";
 
 function Login() {
-    const handleGoogleLogIn = async () => {
-        try {
-            const result = await signInWithPopup(auth, provider);
-            console.log('Usuario autenticado correctamente', result.user)
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
-            const userEmail = result.user.email;
-
-            const userDoc = await getDoc(doc(db, "users", userEmail));
-            if(userDoc.exits) {
-                const userData = userDoc.data();
-                console.log('Datos del usuario', userData)
-            } else {
-                console.log('No se encontraron los datos del usuario')
-            }
-
-            window.location.href = '/';
-
-        } catch (error) {
-            console.log('Error al autenticarse con Google')
-        }
+    // Manejo de cambios en los campos del formulario
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
     };
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    // const [errorMessage, setErrorMessage] = useState('');
-
-    const handeLogin = async (e) => {
+    // Manejo del inicio de sesión de usuario
+    const handleLogin = async (e) => {
         e.preventDefault();
+
         try {
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            // Iniciar sesión en Firebase Authentication
+            const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
             const user = userCredential.user;
 
-            const userDoc = await getDoc(doc(db, "users", user.email));
+            // Obtener el rol del usuario desde Firestore
+            const userDoc = await getDoc(doc(db, 'users', user.uid));
             if (userDoc.exists()) {
                 const userData = userDoc.data();
-                console.log('Datos del usuario', userData)
-                window.location.href = "/";
+                console.log('Inicio de sesión exitoso, rol:', userData.role);
+
+                // Redireccionar según el rol
+                if (userData.role === 'admin') {
+                    console.log('Bienvenido, Admin');
+                    navigate('/dashboard/admin'); // Redirigir a la página de administración
+                } else {
+                    console.log('Bienvenido, Usuario');
+                    navigate('/'); // Redirigir a la página principal para usuarios
+                }
             } else {
-                console.log('No se encontraron los datos del usuario')
+                setErrorMessage('No se encontraron datos de usuario en Firestore.');
             }
-            
         } catch (error) {
-            // setErrorMessage('Error al iniciar sesión. Verifica tus credenciales.');
-            console.log('Error al iniciar sesión', error);
+            console.error('Error en el inicio de sesión:', error);
+            setErrorMessage('Error al iniciar sesión. Verifica tus credenciales.');
         }
     };
 
-    return(
+    return (
         <>
             <Navbar />
             <div className="title-animation">
@@ -66,42 +68,43 @@ function Login() {
             </div>
             <div className="login-form">
                 <div className="login-contain">
-                    <form>
+                    <form onSubmit={handleLogin}>
                         <center><h1 className="title-form">Login</h1></center>
-                        <input 
-                        className="input-form" 
-                        type="text" 
-                        placeholder="Correo" 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}/>
 
                         <input 
-                        className="input-form" 
-                        type="password" 
-                        placeholder="Contraseña"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                            className="input-form" 
+                            type="text" 
+                            name="email"
+                            placeholder="Correo"
+                            value={formData.email}
+                            onChange={handleChange}
                         />
 
-                        {/* {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>} */}
+                        <input 
+                            className="input-form" 
+                            type="password" 
+                            name="password"
+                            placeholder="Contraseña"
+                            value={formData.password}
+                            onChange={handleChange}
+                        />
+
+                        {errorMessage && <p className='error-msg'>{errorMessage}</p>}
 
                         <center>
-                            <button className="btn-enviar" type="submit" onSubmit={handeLogin}>Iniciar sesión</button>
+                            <button className="btn-enviar" type="submit">Iniciar sesión</button> 
+                            
                         </center>
-
-                        <div className="option-login">
-                            <center>
-                                <i className="fa-brands fa-google" onClick={handleGoogleLogIn}>
-                                    <a href="#">Ingresa con tu cuenta de Google</a>
-                                    </i>
-                            </center>
+                        
+                        <div className="option-route-register">
+                            <h4 className='title-route'>No tienes una cuenta? <span className='route-gnral'><a className='text-route' href="/register">Registrate</a></span></h4>
                         </div>
                     </form>
                 </div>
             </div>
             <Footer />
         </>
-    )
+    );
 }
 
-export default Login
+export default Login;
