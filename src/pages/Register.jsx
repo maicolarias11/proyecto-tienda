@@ -1,47 +1,21 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth, db } from '../firebase-config'; // Importa la configuración de Firebase
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc, getDocs, collection } from 'firebase/firestore';
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { auth, provider, signInWithPopup, db } from "../firebase-config";
-import { collection, addDoc, getDocs } from "firebase/firestore";
 
 function Register() {
     const [formData, setFormData] = useState({
         name_complete: '',
-        phone: '',
         email: '',
         password: ''
     });
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
-    // Verifica si ya hay un admin registrado
-    const checkRolAdminExists = async () => {
-        const querySnapshot = await getDocs(collection(db, "users"));
-        return !querySnapshot.empty;
-    };
-
-    // Manejo para el registro con Google
-    const handleGoogleSignIn = () => {
-        signInWithPopup(auth, provider)
-        .then(async (result) => {
-            console.log('Usuario registrado correctamente', result.user);
-
-            const isAdminExists = await checkRolAdminExists();
-
-            await addDoc(collection(db, "users"), {
-                name_complete: result.user.displayName,
-                phone: result.user.phoneNumber || '',
-                email: result.user.email,
-                method_register: "Google",
-                rol: isAdminExists ? "user" : "admin"
-            });
-            
-            window.location.href = '/';
-        })
-        .catch((error) => {
-            console.log('Error al registrarse con Google', error);
-        });
-    };
-
-    // Maneja cambios en el formulario
+    // Manejo de cambios en los campos del formulario
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -49,25 +23,37 @@ function Register() {
         });
     };
 
-    // Maneja el registro manual
+    // Manejo del registro de usuario
     const handleRegister = async (e) => {
         e.preventDefault();
-        try {
-            const isAdminExists = await checkRolAdminExists();
 
-            await addDoc(collection(db, "users"), {
+        try {
+            // Crear usuario en Firebase Authentication
+            const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+            const user = userCredential.user;
+
+            // Comprobar si ya existe un administrador
+            const usersSnapshot = await getDocs(collection(db, 'users'));
+            const isAdminExists = usersSnapshot.docs.some(doc => doc.data().role === 'admin');
+            
+            // Asignar rol al usuario
+            const role = isAdminExists ? 'user' : 'admin';
+
+            // Guardar información en Firestore
+            await setDoc(doc(db, 'users', user.uid), {
+                uid: user.uid,
                 name_complete: formData.name_complete,
-                phone: formData.phone,
                 email: formData.email,
-                password: formData.password,
-                method_register: "Manual",
-                rol: isAdminExists ? "user" : "admin"
+                role: role
             });
 
-            console.log('Usuario registrado correctamente');
-            window.location.href = "/";
+            console.log('Usuario registrado y rol asignado:', role);
+
+            navigate(role === 'admin' ? '/dashboard/admin' : '/')
         } catch (error) {
-            console.log('Error al registrar usuario', error);
+            console.error('Error al registrar usuario:', error);
+            setErrorMessage('Faltan campos por ingresar.')
+
         }
     };
 
@@ -84,9 +70,9 @@ function Register() {
                 </center>
             </div>
             <div className="register-form">
-                <a href="/login" className="icon-xmark"><i className="fa-solid fa-xmark"></i></a>
+                <a href="/" className="icon-xmark"><i className="fa-solid fa-xmark"></i></a>
                 <div className="register-contain">
-                    <form>
+                    <form onSubmit={handleRegister}>
                         <div className="body-form">
                             <center>
                                 <h1 className="title-form">Registrate</h1>
@@ -105,18 +91,9 @@ function Register() {
                         <input 
                             className="input-form" 
                             type="text" 
-                            name="phone" 
-                            placeholder="Telefono"
-                            value={formData.phone} 
-                            onChange={handleChange}
-                        />
-                        
-                        <input 
-                            className="input-form" 
-                            type="text" 
                             name="email" 
                             placeholder="Correo"
-                            value={formData.email} 
+                            value={formData.email}
                             onChange={handleChange}
                         />
                         
@@ -124,22 +101,22 @@ function Register() {
                             className="input-form" 
                             type="password" 
                             name="password" 
-                            placeholder="Contraseña" 
-                            value={formData.password} 
+                            placeholder="Contraseña"
+                            value={formData.password}
                             onChange={handleChange}
                         />
 
+                        {errorMessage && <p className='error-msg'>{errorMessage}</p>}
+
                         <center>
-                            <button className="btn-enviar" type="submit" onSubmit={handleRegister}>Registrarse</button>
+                            <button className="btn-enviar" type="submit">Registrarse</button>
                         </center>
 
-                        <div className="option-register">
-                            <center>
-                                <i className="fa-brands fa-google" onClick={handleGoogleSignIn}>
-                                    <a href="#">Registrate con tu cuenta de Google</a>
-                                </i>
-                            </center>
-                        </div>
+                        <center>
+                            <div className="option-route-login">
+                                <h4 className='title-route'>Ya tienes una cuenta? <span className='route-gnral'><a className='text-route' href="/login">Iniciar Sesión</a></span></h4>
+                            </div>
+                        </center>
                     </form>
                 </div>
             </div>

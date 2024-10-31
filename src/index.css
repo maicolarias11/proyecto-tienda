@@ -465,6 +465,41 @@ p {
   margin: 10px;
 }
 
+.option-route-register {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.route-gnral {
+  background-color: black;
+  margin: 5px;
+  margin-top: 8px;
+  padding: 3px;
+  border-radius: 6px;
+}
+
+.title-route {
+  color: white;
+  font-size: 17px;
+}
+
+.text-route {
+  font-size: 15px;
+}
+
+.error-msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  width: 106%;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  height: 6vh;
+  border-radius: 6px;
+}
+
 /*Register*/
 .register-form {
   margin: 10px;
@@ -510,6 +545,12 @@ p {
   /* border-radius: 100px;
   background-color: black; */
 }
+
+.option-route-login {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 
 /*Estilos generales Dashboard*/
 .flex {

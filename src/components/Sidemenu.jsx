@@ -7,7 +7,7 @@ function SideMenu() {
         signOut(auth)
         .then(() => {
             console.log('Sesión cerrada');
-            window.location.href = "/login";
+            window.location.href = "/";
         })
         .cath((error) => {
             console.log('Error al cerrar la sesión', error);
