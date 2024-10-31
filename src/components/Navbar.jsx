@@ -64,7 +64,9 @@ function Navbar() {
                 <li className='nav_item'><a href="/">Home</a></li>
                 <li className='nav_item'><a href="/catalogo">Catalogo</a></li>
                 <li className='nav_item'>
-                    <i className='icon-shop fa-solid fa-shop'></i>
+                    <a href="/carrito">
+                        <i className='icon-shop fa-solid fa-shop'></i>
+                    </a>
                 </li>
                 {isAuthenticated ? (
                     <li className='nav_item' >

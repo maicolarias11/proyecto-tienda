@@ -17,7 +17,11 @@ function Catalogo() {
       <br />
       <div className="card-contain">
         <div className="card-catalogo">
-          <center><img src="/src/images/Card tienda.jpg" alt="" /></center>
+          <center>
+            <a href="/vista/producto">
+              <img src="/src/images/Card tienda.jpg" alt="" />
+            </a>
+          </center>
           <div className="text-card">
             <p>Camiseta pantera negra basica</p>
             <p>$60,000</p>
