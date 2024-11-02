@@ -778,9 +778,18 @@ h3 {
   height: 5vh;
 }
 
-.file:hover {
+
+.data-user {
+  height: 5vh;
+}
+
+.data-user:hover {
   background-color: #696464;
 }
+
+/* .file:hover {
+  background-color: #696464;
+} */
 
 th {
   color: white;
