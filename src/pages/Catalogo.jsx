@@ -1,19 +1,21 @@
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
+import Sidemenuproducts from "../components/Sidemenuproducts"
 
 
 function Catalogo() {
   return (
     <>
       <Navbar />
-      <div className="catalogo">
+      <Sidemenuproducts />
+      {/* <div className="catalogo">
         <br />
         <center>
           <a href="/camisetas"><button className="btn-clo">Camisetas</button></a>
           <a href="/buzos"><button className="btn-clo">Buzos</button></a>
           <a href="/gorras"><button className="btn-clo">Gorras</button></a>
         </center>
-      </div>
+      </div> */}
       <br />
       <div className="card-contain">
         <div className="card-catalogo">

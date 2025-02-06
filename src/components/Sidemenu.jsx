@@ -1,10 +1,10 @@
 import { signOut } from 'firebase/auth';
-import { auth } from '../firebase-config';
+
 
 function SideMenu() {
 
     const handleSideMenuLogout  = () => {
-        signOut(auth)
+        signOut()
         .then(() => {
             console.log('Sesión cerrada');
             window.location.href = "/";
@@ -20,7 +20,7 @@ function SideMenu() {
                 <div className="sidemenu-contain">
                     <ul className="side-options">
                         
-                    <li className='side_nav_item'>
+                        <li className='side_nav_item'>
                             <i className="side-icons fa-solid fa-chart-line"></i><a href="/dashboard/admin">Dashboard</a>
                         </li>
                         <li className='side_nav_item'>

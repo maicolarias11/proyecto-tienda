@@ -1,11 +1,13 @@
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
+import Sidemenuproducts from "../components/Sidemenuproducts"
 
 
 function Camisetas() {
     return(
         <>
             <Navbar />
+            <Sidemenuproducts />
             <div className="title-animation">
                 <center>
                     <span>CAMISETAS PARA HOMBRE</span>

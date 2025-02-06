@@ -5,7 +5,7 @@
 }
 
 body{
-  background-color: rgb(43, 43, 43);
+  background-color: black;
 }
 /*Navbar*/
 .logoimg {
@@ -23,6 +23,10 @@ a{
   text-decoration: none;
   color: white;
   font-size: 20px;
+}
+
+.nav_item:hover {
+  color: #d46e8a;
 }
 
 .nav{
@@ -94,6 +98,29 @@ a{
 
 .icon-lg-re {
   margin: 8px;
+}
+
+/*SideMenu Products*/
+.sidemenuproducts-contain {
+  padding: 10px;
+  background-color: black;
+}
+
+.sidemenuproducts-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.sidemenuproducts-item {
+  font-size: 20px;
+  color: white;
+}
+
+.sidemenuproducts-item:hover {
+  color: #d46e8a;
 }
 
 /*Card Home*/
@@ -237,6 +264,7 @@ h1 {
   /* margin-bottom: 5px; */
   font-size: 17px;
   text-align: center;
+  color: white;
 }
 
 .btn-clo {
@@ -263,20 +291,20 @@ h1 {
 .title-animation span {
   display: inline-block;
   padding: 0 30px;
-  animation: moveText 10s linear infinite; 
+  animation: moveText 8s linear infinite; 
   color: white;
   font-size: 20px;
 }
 
 @keyframes moveText {
   0% {
-    transform: translateX(100%); /* Comienza fuera del contenedor por la derecha */
+    transform: translateX(380%); /* Comienza fuera del contenedor por la derecha */
   }
   50% {
     transform: translateX(-100%); /* Mueve el texto fuera del contenedor por la izquierda */
   }
   100% {
-    transform: translateX(100%); /* Regresa al punto inicial, a la derecha */
+    transform: translateX(380%); /* Regresa al punto inicial, a la derecha */
   }
 }
 

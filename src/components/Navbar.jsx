@@ -1,102 +1,111 @@
-// import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../images/Logo.png';
-import { useState, useEffect } from 'react';
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import { auth, db } from '../firebase-config';
-import { getDoc, doc } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { 
+    Avatar,  
+    Stack, 
+} from '@mui/material';
+
+function stringToColor(string) {
+    let hash;
+    for (let i = 0; i < string.length; i++) {
+        hash = string.charCodeAt(1) + ((hash << 5) - hash);
+    }
+    let color = '#'
+    for (let i = 0; i < 3; i++) {
+        const value = (hash >> (i * 8)) & 0xff;
+        color += `00${value.toString(16)}`.slice(-2);
+    }
+    return color
+}
+
+function stringAvatar(email) {
+    return{
+        sx: {
+            bgColor: stringToColor(email),
+        },
+        children: email.charAt(0).toUpperCase()
+    }
+}
 
 function Navbar() {
     const [active, setActive] = useState("nav_menu");
     const [toggleIcon, setToggleIcon] = useState("nav_toggler");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userEmail, setUserEmail] = useState("")
+    const navigate = useNavigate();
+
     const navToggle = () => {
-        active === 'nav_menu' 
-        ? setActive("nav_menu nav_active") 
-        : setActive("nav_menu");
-
-        ///TogglerIcon
-
-        toggleIcon === "nav_toggler"
-        ? setToggleIcon("nav_toggler toggle")
-        : setToggleIcon("nav_toggler");
-    }
-
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [userRole, setUserRole] = useState(null);
+        setActive(active === 'nav_menu' ? "nav_menu nav_active" : "nav_menu");
+        setToggleIcon(toggleIcon === "nav_toggler" ? "nav_toggler toggle" : "nav_toggler");
+    };
 
     useEffect(() => {
-        const auth = getAuth();
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
-            if(user) {
-                setIsAuthenticated(true);
-                const userDoc = await getDoc(doc(db, 'users', user.uid));
-                if (userDoc.exists()) {
-                    setUserRole(userDoc.data().role);
-                }
-            }
-            else {
-                setIsAuthenticated(false);
-                setUserRole(null);
-            }
-        });
-
-        return () => unsubscribe();
+        const token = localStorage.getItem("token");
+        const email = localStorage.getItem("userEmail")
+        if (token && email) {
+            setIsLoggedIn(true);
+            setUserEmail(email);
+        }
     }, []);
 
-    const handleLogout  = () => {
-        signOut(auth)
-        .then(() => {
-            console.log('Sesión cerrada');
-            window.location.href = "/";
-        })
-        .cath((error) => {
-            console.log('Error al cerrar la sesión', error);
-        })
-    }
-    
-  return (
-    <>
-        <nav className="nav">
-            <a href="#" className='#'><img className='logoimg' src={Logo} width="50000000%" alt="" /></a>
-            {/* <ul>
-                <li></li>
-            </ul> */}
-            <ul className={active}>
-                <li className='nav_item'><a href="/">Home</a></li>
-                <li className='nav_item'><a href="/catalogo">Catalogo</a></li>
-                <li className='nav_item'>
-                    <a href="/carrito">
-                        <i className='icon-shop fa-solid fa-shop'></i>
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userEmail")
+        setIsLoggedIn(false);
+        setUserEmail("")
+        navigate("/login");
+    };
+
+    return (
+        <>
+            <nav className="nav">
+                <a href="#" className='#'><img className='logoimg' src={Logo} width="50000000%" alt="Logo" /></a>
+                
+                <ul className={active}>
+                    <a href="/">
+                        <li className='nav_item'>
+                            Home
+                        </li>
                     </a>
-                </li>
-                {isAuthenticated ? (
-                    <li className='nav_item' >
-                        {userRole === 'admin' && (
-                            <li className='nav_item'><a href="/dashboard/admin">Dashboard</a></li>
-                        )}
-                        
-                        {/* <i className="icon-lg-re fa-regular fa-user"></i> */}
-                        <i className="icon-lg-re fa-solid fa-right-from-bracket" onClick={handleLogout}></i>
-                    </li>
-                ) : (
-                    <>
-                        <li className='nav_item'><a href="/login"><i className="icon-lg-re fa-regular fa-user"></i></a></li>
-                        {/* <li className='nav_item'><a href="/login">LogIn</a></li>
-                        <li className='nav_item'><a href="/register">Register</a></li> */}
-                    </>
-                )}
-                 {/* <li className='nav_item' >
-                    <i className="icon-lg-re fa-regular fa-user"></i>
-                    <i className="icon-lg-re fa-solid fa-right-from-bracket"></i>
-                </li> */}
-            </ul>
-            <div onClick={navToggle} className={toggleIcon}>
-                <div className='line1'></div>
-                <div className='line2'></div>
-                <div className='line3'></div>
-            </div>
-        </nav>
-    </>
-  )
+                    <a href="/catalogo">
+                        <li className='nav_item'>
+                            Catálogo
+                        </li>
+                    </a>
+                    <a href="/carrito">
+                        <li className='nav_item'>
+                            <i className='icon-shop fa-solid fa-shop'></i>
+                        </li>
+                    </a>
+                    {isLoggedIn ? (
+                        <>
+                            <li className='nav_item'>
+                                <Stack direction="row" spacing={2}>
+                                    <Avatar {...stringAvatar(userEmail)} />
+                                </Stack>
+                            </li>
+                            <li className='nav_item' onClick={handleLogout}>
+                                <i className="icon-lg-re fa-solid fa-right-from-bracket"></i>
+                            </li>
+                        </>
+                    ) : (
+                        <li className='nav_item'>
+                            <a href="/login">
+                                <i className="icon-lg-re fa-regular fa-user"></i>
+                            </a>
+                        </li>
+                    )}
+                </ul>
+
+                <div onClick={navToggle} className={toggleIcon}>
+                    <div className='line1'></div>
+                    <div className='line2'></div>
+                    <div className='line3'></div>
+                </div>
+            </nav>
+        </>
+    );
 }
 
-export default Navbar
+export default Navbar;

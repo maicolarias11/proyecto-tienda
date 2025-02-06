@@ -1,11 +1,13 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Sidemenuproducts from "../components/Sidemenuproducts";
 
 
 function Gorras() {
     return (
         <>
             <Navbar />
+            <Sidemenuproducts />
             <div className="title-animation">
                 <center>
                     <span>GORRAS PARA HOMBRE</span>
