@@ -781,9 +781,16 @@ h3 {
   width: 30%;
   height: 6vh;
   border: none;
-  background-color: black;
+  background-color: #696464;
   color: white;
   border-radius: 16px;
+}
+
+.btn-publish:hover {
+  background-color: #d46e8a;
+  color: black;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
 }
 
 /*Estilos generales table Pedidos y Usuarios*/
@@ -794,18 +801,39 @@ h3 {
 }
 
 .column {
-  background-color: black;
-  height: 5vh;
+  height: 6vh;
 }
 
 .column:hover {
-  background-color: #b93d08;
+  background-color: #d46e8a;
+  color: black;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+
 }
 
 .file {
-  height: 5vh;
+  height: 10vh;
+  color: white;
 }
 
+.icons-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.icon-table-1 { 
+  color: green;
+  margin-right: 25px;
+}
+
+.icon-table-2 { 
+  color: red;
+}
 
 .data-user {
   height: 5vh;
