@@ -27,6 +27,9 @@ function SideMenu() {
                             <i className="side-icons fa-solid fa-truck-fast"></i><a href="/inventario">Inventario</a>
                         </li>
                         <li className='side_nav_item'>
+                            <i className="side-icons fa-solid fa-shirt"></i><a href="/inventario/productos">Productos</a>
+                        </li>
+                        <li className='side_nav_item'>
                             <i className="side-icons fa-solid fa-cart-plus"></i><a href="/pedidos">Pedidos</a>
                         </li>
                         <li className='side_nav_item'>

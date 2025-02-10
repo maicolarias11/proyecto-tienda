@@ -1,9 +1,26 @@
+import { useEffect, useState } from "react"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import Sidemenuproducts from "../components/Sidemenuproducts"
+import axios from "axios"
 
 
 function Camisetas() {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        const fetchDataProducts = async () => {
+            try {
+                const response = await axios.get("http://localhost:4000/api/cloth0311/inventary/products?category=Camisetas");
+                setProducts(response.data);
+            } catch (error) {
+                console.error("Error al obtener los productos", error);
+            }
+        };
+
+        fetchDataProducts()
+    }, [])
+
     return(
         <>
             <Navbar />
@@ -22,45 +39,19 @@ function Camisetas() {
             </div>
             <br />
             <div className="card-contain">
-                <div className="card-catalogo">
-                    <center><img src="/src/images/Card tienda.jpg" alt="" /></center>
-                    <div className="text-card">
-                    <p>Camiseta pantera negra basica</p>
-                    <p>$60,000</p>
+                {products.map((product) => (
+                    <div className="card-catalogo" key={product.id_product}>
+                        <center>
+                            <a href="/vista/producto">
+                                <img src={`http://localhost:4000/uploads/${product.image_product}`} alt={product.nam_product} />
+                            </a>
+                        </center>
+                        <div className="text-card">
+                            <p>{product.name_product}</p>
+                            <p>{product.price_product}</p>
+                        </div>
                     </div>
-                </div>
-
-                <div className="card-catalogo">
-                    <center><img src="/src/images/Card tienda.jpg" alt="" /></center>
-                    <div className="text-card">
-                    <p>Camiseta pantera negra basica</p>
-                    <p>$60,000</p>
-                    </div>
-                </div>
-
-                <div className="card-catalogo">
-                    <center><img src="/src/images/Card tienda.jpg" alt="" /></center>
-                    <div className="text-card">
-                    <p>Camiseta pantera negra basica</p>
-                    <p>$60,000</p>
-                    </div>
-                </div>
-
-                <div className="card-catalogo">
-                    <center><img src="/src/images/Card tienda.jpg" alt="" /></center>
-                    <div className="text-card">
-                    <p>Camiseta pantera negra basica</p>
-                    <p>$60,000</p>
-                    </div>
-                </div>
-
-                <div className="card-catalogo">
-                    <center><img src="/src/images/Card tienda.jpg" alt="" /></center>
-                    <div className="text-card">
-                    <p>Camiseta pantera negra basica</p>
-                    <p>$60,000</p>
-                    </div>
-                </div>
+                ))}
             </div>
             <Footer />
         </>
