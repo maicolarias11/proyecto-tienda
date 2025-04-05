@@ -87,6 +87,9 @@ function Productos() {
                                                             className="icon-table-2 fa-solid fa-trash" 
                                                             onClick={() => handleDeleteProduct(product.id_product)}
                                                         ></i>
+                                                        <a href={`/detalle/producto/${product.id_product}`}>
+                                                            <i className="icon-table-3 fa-solid fa-plus"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             );

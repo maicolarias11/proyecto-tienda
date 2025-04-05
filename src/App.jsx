@@ -14,6 +14,7 @@ import Usuarios from './pages/Usuarios';
 import ViewProduct from './pages/Viewproduct';
 import CartShopping from './pages/CartShopping';
 import Productos from './pages/Productos';
+import DetailProduct from './components/DetailProduct';
 
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
           <Route path='/inventario/productos' element={<Productos />} />
           <Route path='/pedidos' element={<Pedidos />} />
           <Route path='/usuarios' element={<Usuarios />} />
+          <Route path='/detalle/producto' element={<DetailProduct />} />
+          <Route path='/detalle/producto/:id_product' element={<DetailProduct />} />
         </Routes>
       </Router>
     </>

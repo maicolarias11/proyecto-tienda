@@ -793,6 +793,32 @@ h3 {
   transition: transform 0.3s ease;
 }
 
+/*DetailProduct*/
+.detailproduct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-detailproduct {
+  width: 50%;
+  padding-left: 20px;
+  margin: 10px;
+}
+
+.title-size {
+  color: white;
+  font-size: 20px;
+  margin: 10px;
+  margin-bottom: 10px;
+}
+
+.radio-label {
+  color: white;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
 /*Estilos generales table Pedidos y Usuarios*/
 .table-gnral {
   background-color: #333;
@@ -833,6 +859,11 @@ h3 {
 
 .icon-table-2 { 
   color: red;
+}
+
+.icon-table-3 {
+  color: #d46e8a;
+  margin-left: 25px;
 }
 
 .data-user {
