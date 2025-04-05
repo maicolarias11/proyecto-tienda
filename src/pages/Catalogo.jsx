@@ -3,6 +3,7 @@ import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import Sidemenuproducts from "../components/Sidemenuproducts"
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 function Catalogo() {
@@ -32,9 +33,9 @@ function Catalogo() {
           products.map((product) => (
             <div className="card-catalogo" key={product.id_product}>
               <center>
-                <a href={`/vista/producto/${product.id_product}`}>
+                <Link to={`/vista/producto/${product.id_product}`}>
                   <img src={`http://localhost:4000/uploads/${product.image_product}`} alt={product.name_product} />
-                </a>
+                </Link>
               </center>
               <div className="text-card">
                 <p>{product.name_product}</p>
