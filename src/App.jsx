@@ -15,6 +15,8 @@ import ViewProduct from './pages/Viewproduct';
 import CartShopping from './pages/CartShopping';
 import Productos from './pages/Productos';
 import DetailProduct from './components/DetailProduct';
+import DetailRole from './components/DetailRole';
+import AdminRoutes from './routes/AdminRoutes';
 
 
 function App() {
@@ -31,14 +33,24 @@ function App() {
           <Route path='/vista/producto' element={<ViewProduct />} />
           <Route path='/vista/producto/:id_product' element={<ViewProduct />} />
           <Route path='/carrito' element={<CartShopping />} />
-          <Route path='/dashboard/admin' element={<DashboardAdmin />} />
-          <Route path='/inventario' element={<Inventario />} />
-          <Route path='/inventario/:id_product' element={<Inventario />} />
-          <Route path='/inventario/productos' element={<Productos />} />
-          <Route path='/pedidos' element={<Pedidos />} />
-          <Route path='/usuarios' element={<Usuarios />} />
-          <Route path='/detalle/producto' element={<DetailProduct />} />
-          <Route path='/detalle/producto/:id_product' element={<DetailProduct />} />
+          {/* <Route path='/dashboard/admin' element={<AdminRoutes><DashboardAdmin /></AdminRoutes>} /> */}
+          <Route 
+            path="/dashboard/admin" 
+            element={
+                <AdminRoutes>
+                    <DashboardAdmin />
+                </AdminRoutes>
+            } 
+        />
+          <Route path='/inventario' element={<AdminRoutes><Inventario /></AdminRoutes>} />
+          <Route path='/inventario/:id_product' element={<AdminRoutes><Inventario /></AdminRoutes>} />
+          <Route path='/inventario/productos' element={<AdminRoutes><Productos /></AdminRoutes>} />
+          <Route path='/pedidos' element={<AdminRoutes><Pedidos /></AdminRoutes>} />
+          <Route path='/usuarios' element={<AdminRoutes><Usuarios /></AdminRoutes>} />
+          <Route path='/detalle/producto' element={<AdminRoutes><DetailProduct /></AdminRoutes>} />
+          <Route path='/detalle/producto/:id_product' element={<AdminRoutes><DetailProduct /></AdminRoutes>} />
+          <Route path='/detalle/usuarios' element={<AdminRoutes><DetailRole /></AdminRoutes>} />
+          <Route path='/detalle/usuarios/:id' element={<AdminRoutes><DetailRole /></AdminRoutes>} />
         </Routes>
       </Router>
     </>
