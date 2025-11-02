@@ -843,6 +843,15 @@ h3 {
   color: white;
 }
 
+.file-user {
+  color: white;
+}
+
+.celda-table-user {
+  margin: 15px;
+  font-size: 18px;
+}
+
 .icons-table {
   display: flex;
   justify-content: center;
@@ -864,6 +873,21 @@ h3 {
 .icon-table-3 {
   color: #d46e8a;
   margin-left: 25px;
+}
+
+.icons-table-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-table-users-1 {
+  color: red;
+  margin-right: 20px;
+}
+
+.icon-table-users-2 {
+  color: #d46e8a;
 }
 
 .data-user {
@@ -995,3 +1019,25 @@ section, p, h2, a {
 /* .section-3 {
   margin-left: auto;
 } */
+
+.form-detailrole {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-role {
+  width: 30%;
+  height: 6vh;
+  border: none;
+  background-color: #696464;
+  color: white;
+  border-radius: 16px;
+}
+
+.btn-role:hover {
+  background-color: #d46e8a;
+  color: black;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}

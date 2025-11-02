@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 import { Stack } from "@mui/material";
+import { getUserRole } from "../helpers/auth";
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -44,11 +45,18 @@ function Login() {
                     localStorage.setItem("userEmail", formData.email);
                 }
 
+                const role = getUserRole();
+
                 setAlertInfo({ message: response.data.message, severity: "success" });
 
                 setTimeout(() => {
                     setAlertInfo({ message: "", severity: "" });
-                    navigate("/");
+                    
+                    if (role === "admin") {
+                        navigate("/dashboard/admin");
+                    } else {
+                        navigate("/")
+                    }
                 }, 1500);
             }
         } catch (error) {

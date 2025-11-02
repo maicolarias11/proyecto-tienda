@@ -13,7 +13,7 @@ function DetailProduct() {
     const [color, setColor] = useState("");
     const [alertInfoDetail, setAlertInfoDetail] = useState({ message: "", severity: "" });
     const navigate = useNavigate();
-gi
+
     const handleFileChange = (e) => {
         const files = Array.from(e.target.files);
         setImages((prevImages) => [...prevImages, ...files]);
