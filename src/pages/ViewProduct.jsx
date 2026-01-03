@@ -3,6 +3,8 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import DetailProduct from "../components/DetailProduct";
+import { isAdmin } from "../helpers/auth"
+
 
 function ViewProduct({ productId }) {
     const [products, setProducts] = useState([]);
@@ -55,7 +57,7 @@ function ViewProduct({ productId }) {
                         <img className="img-product-1" src="/src/images/Card tienda.jpg" alt="" />
                         <img className="img-product-2" src="/src/images/Card tienda.jpg" alt="" />
                     </div> */}
-                    <DetailProduct />
+                    {isAdmin() && <DetailProduct />}
                 </div>
                 <div className="info">
                     <div className="title-section">
