@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function DetailProduct() {
     const [images, setImages] = useState([]);
     const [productId, setProductId] = useState("");
-    const [size, setSize] = useState("");
+    const [size, setSize] = useState([]);
     const [categoryGender, setCategoryGender] = useState("");
     const [type, setType] = useState("");
     const [color, setColor] = useState("");
@@ -37,7 +37,7 @@ function DetailProduct() {
         const formData = new FormData();
         formData.append("product_id", productId);
         formData.append("size", size.join(","));
-        formData.append("categoryGender", categoryGender);
+        formData.append("category_gender", categoryGender);
         formData.append("type", type);
         formData.append("color", color);
 
@@ -138,7 +138,7 @@ function DetailProduct() {
                                     <input
                                         type="file"
                                         className="input-form"
-                                        name="image-detail"
+                                        name="image_detail"
                                         accept="image/*"
                                         multiple
                                         onChange={handleFileChange}
